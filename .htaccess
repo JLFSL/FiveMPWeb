@@ -1,0 +1,14 @@
+RewriteEngine on
+
+RewriteRule ^home/?$ index.php [NC,L]
+RewriteRule ^index/?$ index.php [NC,L]
+RewriteRule ^privacy/?$ privacypolicy.php [NC,L]
+RewriteRule ^tos/?$ termsofservice.php [NC,L]
+
+RewriteRule ^download/?$ download.php [NC,L]
+RewriteRule ^servers/?$ servers.php [NC,L]
+RewriteRule ^team/?$ team.php [NC,L]
+
+RewriteRule ^dashboard/?$ dashboard.php [NC,L]
+
+RewriteRule ^user/(.*)$ /user.php?name=$1 [L]

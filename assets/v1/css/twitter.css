@@ -1,0 +1,73 @@
+/* Twitter Elements */
+.twitter{
+    background: url("../images/twitter.png") no-repeat center;
+    height:100%;
+}
+
+.index-twitter{
+    background: #ffffff;
+    -webkit-box-shadow: 0px 0px 5px 1px rgba(168,168,168,1);
+    -moz-box-shadow: 0px 0px 5px 1px rgba(168,168,168,1);
+    box-shadow: 0px 0px 5px 1px rgba(168,168,168,1);
+    width:100%;
+}
+
+.twitter-head{
+    padding:20px;
+}
+
+.twitter-logo{
+    background-color:#07a2f4;
+    color: #ffffff;
+    font-size: 56px;
+    text-align: center;
+    padding-left: 10px;
+}
+
+.twitter-name{
+    background-color:#24b3ff;
+    color: #ffffff;
+    font-size: 50px;
+    text-align: center;
+}
+
+.tweets{
+    padding:0px 20px 20px 20px;
+}
+
+.tweet-body{
+    font-weight: 500;
+    font-size: 16px;
+    padding:4px 4px 0px 4px;
+}
+
+.tweet-link, .tweet-link:visited{
+    color:#222222;
+}
+
+.tweet-link:hover{
+    text-decoration: none;
+}
+
+.tweet{
+    border-bottom: 1px solid #eee;
+    padding-bottom: 15px;
+    border-left:4px solid #ffffff;
+}
+
+.tweet:hover{
+    background-color:#eeeeee;
+    border-left-color:#5be64c;
+    transition: background 200ms;
+    transition: border 200ms;
+}
+
+.tweet-pic{
+    padding:4px 4px 0px 4px;
+}
+
+.tweet-info{
+    font-size: 14px;
+    font-weight: 700;
+    color: #8a8a8a;
+}
