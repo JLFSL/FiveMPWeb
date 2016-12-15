@@ -19,6 +19,8 @@
 		
 				while ($row = $staff3->fetch()) {
 				$tempauthor = $row["username"];
+				$tempemail = $row["email"];
+				
 				$temprank = $row["rank"];
 				$tempavatar = $row["avatar"];
 				$tempbio = $row["bio"];
@@ -31,7 +33,7 @@
 				// tags separated by vertical bar
 				$strip_tags = "p";
 				$clean_html = preg_replace("#<\s*\/?(".$strip_tags.")\s*[^>]*?>#im", '', htmlspecialchars_decode($tempbio));
-				
+
 				echo "
 					<div class='col-sm-3'>
 						<div class='card'>
@@ -39,7 +41,7 @@
 								<h4 class='card-title'><a href='/user/".$tempauthor."'>$tempauthor</a></h4>
 								<h6 class='card-subtitle text-muted'>$temprank</h6>
 							</div>
-							<center><img src='$tempavatar' class='img-fluid' style='max-height:340px;' alt='$viewuser's avatar'></center>
+							<center><img src='https://www.gravatar.com/avatar/".md5(strtolower(trim($tempemail)))."?d=". urlencode("https://www.five-multiplayer.net/assets/v1/images/profile/picback.png") ."&s=340' class='img-fluid' style='max-height:340px;' alt='<? echo $viewuser; ?>'s avatar'></center>
 							<div class='card-footer text-muted'>";
 								if(!empty($tempsteam)) {
 									echo '<a href="//steamcommunity.com/profiles/'.$tempsteam.'"><img src="/assets/v1/images/social/steam.png" class="img-responsive" style="max-height:32px;"></a>&nbsp;';

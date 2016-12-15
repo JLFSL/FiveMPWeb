@@ -22,11 +22,11 @@
 		}
 	} else {
 		while ($row = $commentdata->fetch()) {
-			$commentdataavatar = $pdo->prepare('SELECT avatar FROM users WHERE username = ?');
+			$commentdataavatar = $pdo->prepare('SELECT email FROM users WHERE username = ?');
 			$commentdataavatar->execute([$row["author"]]);
 			
 			while ($row2 = $commentdataavatar->fetch()) {
-				$commentdataavatar_res = $row2["avatar"];
+				$commentdataavatar_res = $row2["email"];
 			}
 			
 			$newcomment = tagExtract($row["message"]);
@@ -47,7 +47,7 @@
 						echo '</p>';
 							
 						echo '</div><div class="col-sm-2">';
-						echo '<img src="'.$commentdataavatar_res.'" alt="" style="max-height:64px;max-width:90px;">';
+						echo '<a href="/user/'.$row["author"].'"><img src="https://www.gravatar.com/avatar/'. md5(strtolower(trim($commentdataavatar_res))) .'?d='.urlencode("https://www.five-multiplayer.net/assets/v1/images/profile/picback.png").'&s=340" class="img-fluid" style="max-height:340px;" alt="'.$viewuser.'"s avatar"></a>';
 					echo '</div></div>';
 					echo '<div class="clearfix"></div>';
 				echo '</div>';

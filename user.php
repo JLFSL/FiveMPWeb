@@ -20,6 +20,8 @@
 	
 	while ($row = $userdata->fetch()) {
 		$tempauthor = $row["username"];
+		$tempemail = $row["email"];
+		
 		$temprank = $row["rank"];
 		$tempavatar = $row["avatar"];
 		$tempbio = $row["bio"];
@@ -41,7 +43,8 @@
 					<h4 class="card-title"><? echo $tempauthor ?></h4>
 					<h6 class="card-subtitle text-muted"><? echo $temprank; ?></h6>
 				</div>
-				<center><img src="<? echo $tempavatar; ?>" class="img-fluid" style="max-height:340px;" alt="<? echo $viewuser; ?>'s avatar"></center>
+				<!--<center><img src="<? //echo $tempavatar; ?>" class="img-fluid" style="max-height:340px;" alt="<? //echo $viewuser; ?>'s avatar"></center>-->
+				<center><img src="https://www.gravatar.com/avatar/<? echo md5(strtolower(trim($tempemail))); ?>?d=<? echo urlencode("https://www.five-multiplayer.net/assets/v1/images/profile/picback.png"); ?>&s=340" class="img-fluid" style="max-height:340px;" alt="<? echo $viewuser; ?>'s avatar"></center>
 				<div class="card-footer text-muted">
 					<?php 
 						if(!empty($tempsteam)) {
@@ -107,6 +110,12 @@
 </div>
 </div>
 
+<div id="hiddenamount">
+	<?php 
+		//echo getCommentAmount($viewuser); 
+	?>
+</div>
+
 <script>
 	$('a').click(function () {
 		this.blur(); // or $(this).blur();
@@ -116,7 +125,7 @@
 	$.get('/include/global/misc/loadcomments.php?user=<? echo $viewuser; ?>&pageid=' + pid + '&loadmore=0',function(data) {
 			var posts = $(data).find('#correctcomment');
 			//$('#commentlist_ajax').append(posts);
-			$(posts).hide().appendTo("#commentlist_ajax").slideDown(2500);
+			$(posts).hide().appendTo("#commentlist_ajax").slideDown(0);
 		});
 	
 	$('#curcommentpage').append(pid);
@@ -127,7 +136,7 @@
 		$.get('/include/global/misc/loadcomments.php?user=<? echo $viewuser; ?>&pageid=' + pid + '&loadmore=1',function(data) {
 			var posts = $(data).find('#correctcomment');
 			//$('#commentlist_ajax').append(posts).fadeIn(1000);
-			$(posts).hide().appendTo("#correctcomment").slideDown(2500);
+			$(posts).hide().appendTo("#correctcomment").slideDown(1000);
 		});
 		
 		$('#curcommentpage').empty();

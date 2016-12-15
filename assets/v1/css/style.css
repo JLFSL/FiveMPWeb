@@ -3,19 +3,19 @@
     changeing bootstrap elements to the needs of the site.
 */
 
-@import url(https://fonts.googleapis.com/css?family=Roboto:400,100,300,500,700,900);
+@import url(https://fonts.googleapis.com/css?family=Raleway:400,100,300,500,700,900);
 
 h1, h2, h3, h4, h5, h6 {
-    font-family: 'roboto';
+    font-family: 'Raleway';
 }
 p, div {
-    font-family: 'roboto';
+    font-family: 'Raleway';
 }
 
 /* Standard Elements */
 body{
 	background-color: #ecf0f1;
-	background: url("../images/common/header2.jpg");
+	background: url("../images/common/test.png");
 	background-repeat: no-repeat;
 	background-attachment: fixed;
 }
@@ -80,12 +80,12 @@ section#api{
 .disclaimer{
     text-align: center;
     margin-top: 20px;
-    color: #fff;
+    color: #8a8a8a;
     font-size: 11px;
 }
 
 .disclaimer>a:focus, .disclaimer>a:hover, .disclaimer>a {
-	color: #fff;
+	color: #8a8a8a;
 	text-decoration: underline;
 }
 

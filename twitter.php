@@ -24,10 +24,12 @@ $statuses = $connection->get("statuses/user_timeline", ["screen_name" => "FiveMu
     <?php
 	//Do the foreach stuff here.
     foreach ($statuses as $status){
-        echo '<br><a href="https://twitter.com/FiveMultiplayer/status/'.$status->id.'" target="_blank" class="tweet-link">';
+		$profileimage = preg_replace("/^http:/i", "https:", $status->user->profile_image_url);
+		
+        echo '<br><a href="//twitter.com/FiveMultiplayer/status/'.$status->id.'" target="_blank" class="tweet-link">';
         echo '<div class="media tweet">';
         echo '<div class="media-left tweet-pic">';
-        echo '<img src="'.$status->user->profile_image_url.'"/>';
+        echo '<img src="'.$profileimage.'"/>';
         echo '</div>';
         echo '<div class="media-body tweet-body">';
         echo '<span class="tweet-info">'.$status->user->name.' - '.timeSince($status->created_at).'</span>';

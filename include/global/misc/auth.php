@@ -256,15 +256,15 @@
 			$error = "";
 			
 			$bio = htmlspecialchars($_POST["auth-profile-bio"]);
-			$title = $_POST["auth-profile-title"];
-			$twitter = $_POST["auth-profile-twitter"];
-			$steam = $_POST["auth-profile-steam"];
-			$youtube = $_POST["auth-profile-youtube"];
-			$vk = $_POST["auth-profile-vk"];
+			$title = htmlspecialchars($_POST["auth-profile-title"]);
+			$twitter = htmlspecialchars($_POST["auth-profile-twitter"]);
+			$steam = htmlspecialchars($_POST["auth-profile-steam"]);
+			$youtube = htmlspecialchars($_POST["auth-profile-youtube"]);
+			$vk = htmlspecialchars($_POST["auth-profile-vk"]);
 
 			if($bio != "") {
-				$updateprofile = $pdo->prepare("UPDATE users SET bio = :pbio, rank = :prank, twitter = :ptwitter, steam = :psteam, youtube = :pyoutube, vk = :pvk WHERE username = :authid");                                
-				$updateprofile->execute(array(':pbio' => $bio, ':prank' => $title, ':ptwitter' => $twitter, ':psteam' => $steam, ':pyoutube' => $youtube, ':pvk' => $vk, ':authid' => $_SESSION["auth_username"]));
+				$updateprofile = $pdo->prepare("UPDATE users SET bio = :pbio, twitter = :ptwitter, steam = :psteam, youtube = :pyoutube, vk = :pvk WHERE username = :authid");                                
+				$updateprofile->execute(array(':pbio' => $bio, ':ptwitter' => $twitter, ':psteam' => $steam, ':pyoutube' => $youtube, ':pvk' => $vk, ':authid' => $_SESSION["auth_username"]));
 				
 				$success = true;
 			} else {
