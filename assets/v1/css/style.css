@@ -30,6 +30,11 @@ a {
 	/*line-height: 40px;*/
 }
 
+.containermore {
+  margin: 0 auto;
+  width: 70%;
+}
+
 .red {
     color: #c50000;
 }

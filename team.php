@@ -30,41 +30,21 @@
 				$tempyoutube = $row["youtube"];
 				$tempvk = $row["vk"];
 				
-				// tags separated by vertical bar
-				$strip_tags = "p";
-				$clean_html = preg_replace("#<\s*\/?(".$strip_tags.")\s*[^>]*?>#im", '', htmlspecialchars_decode($tempbio));
-
-				echo "
-					<div class='col-sm-3'>
-						<div class='card'>
-							<div class='card-block'>
-								<h4 class='card-title'><a href='/user/".$tempauthor."'>$tempauthor</a></h4>
-								<h6 class='card-subtitle text-muted'>$temprank</h6>
+				echo '
+						<div class="card">
+							<div class="row">
+								<div class="col-md-10">
+									<div class="card-block">
+										<h4 class="card-title"><a href="/user/'.$tempauthor.'">'.$tempauthor.'</a></h4>
+										<h6 class="card-subtitle text-muted">'.$temprank.'</h6>
+									</div>
+								</div>
+								<div class="col-md-2">
+									<img src="https://www.gravatar.com/avatar/'.md5(strtolower(trim($tempemail))).'?d='. urlencode("https://www.five-multiplayer.net/assets/v1/images/profile/picback.png") .'&s=125" class="img-fluid" style="max-height:125px;" alt="'.$tempauthor.'&rsquo;s avatar">
+								</div>
 							</div>
-							<center><img src='https://www.gravatar.com/avatar/".md5(strtolower(trim($tempemail)))."?d=". urlencode("https://www.five-multiplayer.net/assets/v1/images/profile/picback.png") ."&s=340' class='img-fluid' style='max-height:340px;' alt='<? echo $viewuser; ?>'s avatar'></center>
-							<div class='card-footer text-muted'>";
-								if(!empty($tempsteam)) {
-									echo '<a href="//steamcommunity.com/profiles/'.$tempsteam.'"><img src="/assets/v1/images/social/steam.png" class="img-responsive" style="max-height:32px;"></a>&nbsp;';
-								}
-								if(!empty($temptwitter)) {
-									echo '<a href="//twitter.com/'.$temptwitter.'"><img src="/assets/v1/images/social/twitter.png" class="img-responsive" style="max-height:32px;"></a>&nbsp;';
-								}
-								if(!empty($tempyoutube)) {
-									echo '<a href="//youtube.com/channel/'.$tempyoutube.'"><img src="/assets/v1/images/social/youtube.png" class="img-responsive float-xs-right" style="max-height:32px;"></a>&nbsp;';
-								}
-								if(!empty($tempvk)) {
-									echo '<a href="//vk.com/'.$tempvk.'"><img src="/assets/v1/images/social/vk.png" class="img-responsive float-xs-right" style="max-height:32px;"></a>';
-								}  
-							echo "
-							</div>
-							<div class='card-block'>
-									<p class='card-text'>
-										".$clean_html."
-									</p>
-							</div>
-							
 						</div>
-					</div>";
+					';
 				}
 			
 			echo '</div><br><br>';
@@ -73,6 +53,8 @@
 		
 				while ($row = $staff2->fetch()) {
 				$tempauthor = $row["username"];
+				$tempemail = $row["email"];
+				
 				$temprank = $row["rank"];
 				$tempavatar = $row["avatar"];
 				$tempbio = $row["bio"];
@@ -82,41 +64,21 @@
 				$tempyoutube = $row["youtube"];
 				$tempvk = $row["vk"];
 				
-				// tags separated by vertical bar
-				$strip_tags = "p";
-				$clean_html = preg_replace("#<\s*\/?(".$strip_tags.")\s*[^>]*?>#im", '', htmlspecialchars_decode($tempbio));
-				
-				echo "
-					<div class='col-sm-3'>
-						<div class='card'>
-							<div class='card-block'>
-								<h4 class='card-title'><a href='/user/".$tempauthor."'>$tempauthor</a></h4>
-								<h6 class='card-subtitle text-muted'>$temprank</h6>
+				echo '
+						<div class="card">
+							<div class="row">
+								<div class="col-md-10">
+									<div class="card-block">
+										<h4 class="card-title"><a href="/user/'.$tempauthor.'">'.$tempauthor.'</a></h4>
+										<h6 class="card-subtitle text-muted">'.$temprank.'</h6>
+									</div>
+								</div>
+								<div class="col-md-2">
+									<img src="https://www.gravatar.com/avatar/'.md5(strtolower(trim($tempemail))).'?d='. urlencode("https://www.five-multiplayer.net/assets/v1/images/profile/picback.png") .'&s=125" class="img-fluid" style="max-height:125px;" alt="'.$tempauthor.'&rsquo;s avatar">
+								</div>
 							</div>
-							<center><img src='$tempavatar' class='img-fluid' style='max-height:340px;' alt='$viewuser's avatar'></center>
-							<div class='card-footer text-muted'>";
-								if(!empty($tempsteam)) {
-									echo '<a href="//steamcommunity.com/profiles/'.$tempsteam.'"><img src="/assets/v1/images/social/steam.png" class="img-responsive" style="max-height:32px;"></a>&nbsp;';
-								}
-								if(!empty($temptwitter)) {
-									echo '<a href="//twitter.com/'.$temptwitter.'"><img src="/assets/v1/images/social/twitter.png" class="img-responsive" style="max-height:32px;"></a>&nbsp;';
-								}
-								if(!empty($tempyoutube)) {
-									echo '<a href="//youtube.com/channel/'.$tempyoutube.'"><img src="/assets/v1/images/social/youtube.png" class="img-responsive float-xs-right" style="max-height:32px;"></a>&nbsp;';
-								}
-								if(!empty($tempvk)) {
-									echo '<a href="//vk.com/'.$tempvk.'"><img src="/assets/v1/images/social/vk.png" class="img-responsive float-xs-right" style="max-height:32px;"></a>';
-								}  
-							echo "
-							</div>
-							<div class='card-block'>
-									<p class='card-text'>
-										".$clean_html."
-									</p>
-							</div>
-							
 						</div>
-					</div>";
+					';
 				}
 			
 			echo '</div><br><br>';
@@ -125,6 +87,8 @@
 		
 				while ($row = $staff1->fetch()) {
 				$tempauthor = $row["username"];
+				$tempemail = $row["email"];
+				
 				$temprank = $row["rank"];
 				$tempavatar = $row["avatar"];
 				$tempbio = $row["bio"];
@@ -134,41 +98,21 @@
 				$tempyoutube = $row["youtube"];
 				$tempvk = $row["vk"];
 				
-				// tags separated by vertical bar
-				$strip_tags = "p";
-				$clean_html = preg_replace("#<\s*\/?(".$strip_tags.")\s*[^>]*?>#im", '', htmlspecialchars_decode($tempbio));
-				
-				echo "
-					<div class='col-sm-3'>
-						<div class='card'>
-							<div class='card-block'>
-								<h4 class='card-title'><a href='/user/".$tempauthor."'>$tempauthor</a></h4>
-								<h6 class='card-subtitle text-muted'>$temprank</h6>
+				echo '
+						<div class="card">
+							<div class="row">
+								<div class="col-md-10">
+									<div class="card-block">
+										<h4 class="card-title"><a href="/user/'.$tempauthor.'">'.$tempauthor.'</a></h4>
+										<h6 class="card-subtitle text-muted">'.$temprank.'</h6>
+									</div>
+								</div>
+								<div class="col-md-2">
+									<img src="https://www.gravatar.com/avatar/'.md5(strtolower(trim($tempemail))).'?d='. urlencode("https://www.five-multiplayer.net/assets/v1/images/profile/picback.png") .'&s=125" class="img-fluid" style="max-height:125px;" alt="'.$tempauthor.'&rsquo;s avatar">
+								</div>
 							</div>
-							<center><img src='$tempavatar' class='img-fluid' style='max-height:340px;' alt='$viewuser's avatar'></center>
-							<div class='card-footer text-muted'>";
-								if(!empty($tempsteam)) {
-									echo '<a href="//steamcommunity.com/profiles/'.$tempsteam.'"><img src="/assets/v1/images/social/steam.png" class="img-responsive" style="max-height:32px;"></a>&nbsp;';
-								}
-								if(!empty($temptwitter)) {
-									echo '<a href="//twitter.com/'.$temptwitter.'"><img src="/assets/v1/images/social/twitter.png" class="img-responsive" style="max-height:32px;"></a>&nbsp;';
-								}
-								if(!empty($tempyoutube)) {
-									echo '<a href="//youtube.com/channel/'.$tempyoutube.'"><img src="/assets/v1/images/social/youtube.png" class="img-responsive float-xs-right" style="max-height:32px;"></a>&nbsp;';
-								}
-								if(!empty($tempvk)) {
-									echo '<a href="//vk.com/'.$tempvk.'"><img src="/assets/v1/images/social/vk.png" class="img-responsive float-xs-right" style="max-height:32px;"></a>';
-								}  
-							echo "
-							</div>
-							<div class='card-block'>
-									<p class='card-text'>
-										".$clean_html."
-									</p>
-							</div>
-							
 						</div>
-					</div>";
+					';
 				}
 			
 			echo '</div>';

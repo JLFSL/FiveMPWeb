@@ -44,7 +44,7 @@
 		?>
 		<br>
 		
-        <div class="container">
+        <div class="containermore">
 		<img class="hidden-sm-down" src="/assets/v1/images/common/logonoicon.png" style="height:4rem">
 			<div id="header">
 			

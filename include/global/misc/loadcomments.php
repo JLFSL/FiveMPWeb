@@ -47,7 +47,7 @@
 						echo '</p>';
 							
 						echo '</div><div class="col-sm-2">';
-						echo '<a href="/user/'.$row["author"].'"><img src="https://www.gravatar.com/avatar/'. md5(strtolower(trim($commentdataavatar_res))) .'?d='.urlencode("https://www.five-multiplayer.net/assets/v1/images/profile/picback.png").'&s=340" class="img-fluid" style="max-height:340px;" alt="'.$viewuser.'"s avatar"></a>';
+						echo '<a href="/user/'.$row["author"].'"><img src="https://www.gravatar.com/avatar/'. md5(strtolower(trim($commentdataavatar_res))) .'?d='.urlencode("https://www.five-multiplayer.net/assets/v1/images/profile/picback.png").'&s=340" class="img-fluid" style="max-height:340px;" alt="'.$row["author"].'&rsquo;s avatar"></a>';
 					echo '</div></div>';
 					echo '<div class="clearfix"></div>';
 				echo '</div>';
