@@ -38,15 +38,15 @@
     </head>
     <body>
 		<script>
-			$(function() {
+			/*$(function() {
 
 				
 				//load content for first tab and initialize  
 				$('#discord').click(function(e) {
 				   e.preventDefault();
-				$('#discordap').load('discord.php');
+				$('#discordap').load('/discord.php');
 				});
-			});
+			});*/
 		</script>
 		<div id="header">	
 			<nav class="navbar navbar-full navbar-fixed-top navbar-dark bg-faded">
@@ -57,22 +57,31 @@
 					<img class="hidden-sm-down" src="/assets/v1/images/common/logo.png" style="height:3rem">
 				</a>-->
 				<div class="collapse navbar-toggleable-xs headermore" id="collapsenavbar">
-					<a class="navbar-brand" href="#">
-				<img class="hidden-sm-down" src="/assets/v1/images/common/pictransweb.PNG" style="height:30px">
-				</a>
+					<a class="navbar-brand" href="/home"> <img class="hidden-sm-down" src="/assets/v1/images/common/pictransweb.PNG" style="height:30px"></a>
 					<ul class="nav navbar-nav">
 						<li class='nav-item <? if ($_SESSION["page"] == "index") echo "active"; ?>'><a class='nav-link' href='/home'>Home</a></li>
-						<li class='nav-item <? if ($_SESSION["page"] == "servers") echo "active"; ?>'><a class='nav-link' href='/servers'>Servers</a></li>
-						<li class='nav-item'><a class='nav-link' href='//forums.five-multiplayer.net'>Forum</a></li>
 						<li class='nav-item dropdown'>
-							<a class="nav-link dropdown-toggle" id="discord" data-toggle="dropdown" href="" role="button" aria-haspopup="true" aria-expanded="false">Discord</a>
-							<!--<a class='nav-link' href='https://discord.gg/0zRk4CXZ1j2K6wZb'>Discord</a>-->
-							<div id="discordap" class="dropdown-menu">
-								
+							<a class="nav-link dropdown-toggle" data-toggle="dropdown" href="" role="button" aria-haspopup="true" aria-expanded="false">Community</a>
+							<div class="dropdown-menu">
+								<a class='dropdown-item  <? if ($_SESSION["page"] == "forums") echo "active"; ?>' href='//forums.five-multiplayer.net'>Forum</a>
+								<a class='dropdown-item  <? if ($_SESSION["page"] == "twitter") echo "active"; ?>' href='//twitter.com/fivemultiplayer'>Twitter</a>
+								<a class='dropdown-item  <? if ($_SESSION["page"] == "twitter") echo "active"; ?>' href='//discord.gg/0zRk4CXZ1j2K6wZb'>Discord</a>
 							</div>
 						</li>
-						<li class='nav-item <? if ($_SESSION["page"] == "download") echo "active"; ?>'><a class='nav-link' href='/download'>Download</a></li>
-						<li class='nav-item <? if ($_SESSION["page"] == "wiki") echo "active"; ?>'><a class='nav-link' href='https://wiki.five-multiplayer.net'>Documentation</a></li>
+						<li class='nav-item dropdown'>
+							<a class="nav-link dropdown-toggle" data-toggle="dropdown" href="" role="button" aria-haspopup="true" aria-expanded="false">Modification</a>
+							<div class="dropdown-menu">
+								<a class='dropdown-item  <? if ($_SESSION["page"] == "servers") echo "active"; ?>' href='/servers'>Servers</a>
+								<a class='dropdown-item  <? if ($_SESSION["page"] == "download") echo "active"; ?>' href='/download'>Download</a>
+							</div>
+						</li>
+						<li class='nav-item dropdown'>
+							<a class="nav-link dropdown-toggle" data-toggle="dropdown" href="" role="button" aria-haspopup="true" aria-expanded="false">Developers</a>
+							<div class="dropdown-menu">
+								<a class='dropdown-item  <? if ($_SESSION["page"] == "forums") echo "active"; ?>' href='//wiki.five-multiplayer.net'>Documentation</a>
+								<a class='dropdown-item  <? if ($_SESSION["page"] == "twitter") echo "active"; ?>' href='//changelog.five-multiplayer.net'>Changelog</a>
+							</div>
+						</li>
 					</ul>
 					<ul class="nav navbar-nav pull-xs-right">
 						<? if(!isset($_SESSION["auth_logged"])) { ?>
@@ -86,10 +95,15 @@
 				</div>
 			</nav>
 		</div>
-		<?php 
-			require_once($_SERVER['DOCUMENT_ROOT'] . "/login.php"); // Load Login Modal
-			require_once($_SERVER['DOCUMENT_ROOT'] . "/register.php"); // Load Claim Server Modal
-			require_once($_SERVER['DOCUMENT_ROOT'] . "/claimserver.php"); // Load Claim Server Modal
+		<?php
+			if(!isset($_SESSION["auth_logged"])) {
+				require_once($_SERVER['DOCUMENT_ROOT'] . "/login.php"); // Load Login Modal
+				require_once($_SERVER['DOCUMENT_ROOT'] . "/register.php"); // Load Claim Server Modal
+			}
+			
+			if ($_SESSION["page"] == "servers") {
+				require_once($_SERVER['DOCUMENT_ROOT'] . "/claimserver.php"); // Load Claim Server Modal
+			}
 		?>
 		<br>
         <div class="containermore">
@@ -97,8 +111,3 @@
 			if ($_SESSION["page"] != "index" && $_SESSION["page"] != "news") 
 				echo '<div class="page"><section id="content">'; 
 			?>
-			<div class="alert alert-danger" role="alert">
-				<h4 class="alert-danger">Website update</h4>
-				<p>We're currently updating the website with a darker theme and different features, it may take a while to see all changes in effect.</p>
-			</div>
-						

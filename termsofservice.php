@@ -1,6 +1,6 @@
 <?php 
 	require_once($_SERVER['DOCUMENT_ROOT'] . "/include/global/session.php");
-	$_SESSION["page"] = "index";
+	$_SESSION["page"] = "tos";
 	
 	require_once($_SERVER['DOCUMENT_ROOT'] . "/include/global/global.php");
 ?>

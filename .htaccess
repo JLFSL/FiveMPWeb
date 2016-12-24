@@ -18,4 +18,4 @@ RewriteRule ^features/?$ features.php [NC,L]
 RewriteRule ^dashboard/?$ dashboard.php [NC,L]
 
 RewriteRule ^user/(.*)$ /user.php?name=$1 [L]
-RewriteRule ^article/(.*)/(.*)$ /article.php?id=$1&title=$2 [L]
+RewriteRule ^article/(.*)/(.*)/(.*)$ /article.php?id=$1&title=$2&edit=$3 [L]

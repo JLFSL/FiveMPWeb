@@ -19,22 +19,16 @@
 	while ($row = $newsarticle->fetch()) {
 		echo '
 		<br>
-		<div class="row">
-			<div class="col-sm-2"></div>
-			<div class="col-sm-8">
-				<h1><b>' . $row["title"] . '</b></h1>
-				<p>Posted ' . time_elapsed_string('@'.$row["date"]) . ' by <a class="deco-none" href="/user/' . $row["author"] . '">' . $row["author"] . '</a></p>
-				<div class="page">
-					<section id="content">
-						<img class="img-fluid" src="' . $row["image"] . '"><br>
-						<p>' . $row["text"] . '</p>
-						<br>
-					</section>
-				</div>
+			<h1><b>' . $row["title"] . '</b></h1>
+			<p>Posted ' . time_elapsed_string('@'.$row["date"]) . ' by <a class="deco-none" href="/user/' . $row["author"] . '">' . $row["author"] . '</a></p>
+			<div class="page">
+				<section id="content">
+					<center><img class="img-fluid" src="' . $row["image"] . '"></center><br>
+					' . $row["text"] . '
+					<br>
+				</section>
 			</div>
-		</div>
-		<br>
-		<br>';
+		</div>';
 	}
 ?>
 	

@@ -7,7 +7,7 @@
 				Five-Multiplayer is a third-party modification for GTA 5. Five-Multiplayer is in no way affiliated with Take2 or Rockstar Games.
 				<br>
 				<br>
-				<a href="/tos">Terms of Service</a> - <a href="/privacy">Privacy Policy</a> - <a href="mailto:developer@five-multiplayer.net">Contact</a><br>
+				<a href="/tos">Terms of Service</a> - <a href="mailto:developer@five-multiplayer.net">Contact</a><br>
 			</div>
 		</div>
 		<script>
