@@ -265,10 +265,23 @@
 			$steam = htmlspecialchars($_POST["auth-profile-steam"]);
 			$youtube = htmlspecialchars($_POST["auth-profile-youtube"]);
 			$vk = htmlspecialchars($_POST["auth-profile-vk"]);
+			
+			$reddit = htmlspecialchars($_POST["auth-profile-reddit"]);
+			$twitch = htmlspecialchars($_POST["auth-profile-twitch"]);
+			$github = htmlspecialchars($_POST["auth-profile-github"]);
 
 			if($bio != "") {
-				$updateprofile = $pdo->prepare("UPDATE users SET bio = :pbio, twitter = :ptwitter, steam = :psteam, youtube = :pyoutube, vk = :pvk WHERE username = :authid");                                
-				$updateprofile->execute(array(':pbio' => $bio, ':ptwitter' => $twitter, ':psteam' => $steam, ':pyoutube' => $youtube, ':pvk' => $vk, ':authid' => $_SESSION["auth_username"]));
+				$updateprofile = $pdo->prepare("UPDATE users SET bio = :pbio, twitter = :ptwitter, steam = :psteam, youtube = :pyoutube, vk = :pvk, reddit = :preddit, twitch = :ptwitch, github = :pgithub WHERE username = :authid");                                
+				$updateprofile->execute(array(
+				':pbio' => $bio,
+				':ptwitter' => $twitter,
+				':psteam' => $steam,
+				':pyoutube' => $youtube,
+				':pvk' => $vk,
+				':preddit' => $reddit,
+				':ptwitch' => $twitch,
+				':pgithub' => $github,
+				':authid' => $_SESSION["auth_username"]));
 				
 				$success = true;
 			} else {
@@ -345,5 +358,33 @@
 
 				die($output);
 			}
+		}
+	}
+	if($_POST["auth-type"] == "auth-postblogcomment") { // Handles blog comment posting
+		if(isset($_SESSION["auth_logged"])) {
+			$commentmessage = htmlspecialchars($_POST["auth-postblogcomment-message"]);
+			$commentauthor = $_SESSION["auth_username"];
+			$commentreceiver = $_POST["auth-postblogcomment-receiver"];
+			
+			$success = false;
+			
+			$error = "";
+			
+			$comment_post = $pdo->prepare("INSERT INTO blogcomments(blogid, author, text, date) VALUES(:rec, :aut, :mes, :dat)");
+			$comment_post->execute(array("rec" => $commentreceiver, "aut" => $commentauthor, "mes" => $commentmessage, "dat" => time()));
+			
+			$success = true;
+		
+			if($success == true) {
+				$output = json_encode(array('type'=>'success', 'message' => 'Successfully posted comment'));
+			} else {
+				$output = json_encode(array('type'=>'error', 'message' => 'Error: ' . $error));
+			}
+
+			die($output);
+		} else {
+			$error = "Only signed in users can access this feature.";
+			$output = json_encode(array('type'=>'error', 'message' => 'Error: ' . $error));
+			die($output);
 		}
 	}

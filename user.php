@@ -30,6 +30,10 @@
 		$tempsteam = $row["steam"];
 		$tempyoutube = $row["youtube"];
 		$tempvk = $row["vk"];
+		
+		$tempgithub = $row["github"];
+		$tempreddit = $row["reddit"];
+		$temptwitch = $row["twitch"];
 	}
 	
 	$commentdata = $pdo->prepare('SELECT * FROM users_comments WHERE receiver = ? ORDER BY date DESC LIMIT 5');
@@ -46,20 +50,32 @@
 				<!--<center><img src="<? //echo $tempavatar; ?>" class="img-fluid" style="max-height:340px;" alt="<? //echo $viewuser; ?>'s avatar"></center>-->
 				<center><img src="https://www.gravatar.com/avatar/<? echo md5(strtolower(trim($tempemail))); ?>?d=<? echo urlencode("https://www.five-multiplayer.net/assets/v1/images/profile/picback.png"); ?>&s=500" class="img-fluid" style="max-height:500px;" alt="<? echo $viewuser; ?>'s avatar"></center>
 				<div class="card-footer text-muted">
+					<center>
 					<?php 
 						if(!empty($tempsteam)) {
-							echo '<a href="//steamcommunity.com/profiles/'.$tempsteam.'"><img src="/assets/v1/images/social/steam.png" class="img-responsive" style="max-height:32px;"></a>&nbsp;';
+							echo '<a href="//steamcommunity.com/profiles/'.$tempsteam.'"><img src="/assets/v1/images/social/steam.png" class="img-responsive" style="max-height:64px;"></a>&nbsp;';
 						}
 						if(!empty($temptwitter)) {
-							echo '<a href="//twitter.com/'.$temptwitter.'"><img src="/assets/v1/images/social/twitter.png" class="img-responsive" style="max-height:32px;"></a>&nbsp;';
+							echo '<a href="//twitter.com/'.$temptwitter.'"><img src="/assets/v1/images/social/twitter.png" class="img-responsive" style="max-height:64px;"></a>&nbsp;';
 						}
 						if(!empty($tempyoutube)) {
-							echo '<a href="//youtube.com/channel/'.$tempyoutube.'"><img src="/assets/v1/images/social/youtube.png" class="img-responsive float-xs-right" style="max-height:32px;"></a>&nbsp;';
+							echo '<a href="//youtube.com/channel/'.$tempyoutube.'"><img src="/assets/v1/images/social/youtube.png" class="img-responsive float-xs-right" style="max-height:64px;"></a>&nbsp;';
 						}
 						if(!empty($tempvk)) {
-							echo '<a href="//vk.com/'.$tempvk.'"><img src="/assets/v1/images/social/vk.png" class="img-responsive float-xs-right" style="max-height:32px;"></a>';
-						} 
+							echo '<a href="//vk.com/'.$tempvk.'"><img src="/assets/v1/images/social/vk.png" class="img-responsive float-xs-right" style="max-height:64px;"></a>&nbsp;';
+						}
+						
+						if(!empty($tempgithub)) {
+							echo '<a href="//github.com/'.$tempgithub.'"><img src="/assets/v1/images/social/github.png" class="img-responsive float-xs-right" style="max-height:64px;"></a>&nbsp;';
+						}
+						if(!empty($tempreddit)) {
+							echo '<a href="//reddit.com/u/'.$tempreddit.'"><img src="/assets/v1/images/social/reddit.png" class="img-responsive float-xs-right" style="max-height:64px;"></a>&nbsp;';
+						}
+						if(!empty($temptwitch)) {
+							echo '<a href="//twitch.tv/'.$temptwitch.'"><img src="/assets/v1/images/social/twitch.png" class="img-responsive float-xs-right" style="max-height:64px;"></a>&nbsp;';
+						}
 					?>
+					</center>
 				</div>
 				<div class="card-block">
 						<p class="card-text">

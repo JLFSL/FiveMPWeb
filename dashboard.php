@@ -27,6 +27,10 @@
 		$tempsteam = $row["steam"];
 		$tempyoutube = $row["youtube"];
 		$tempvk = $row["vk"];
+		
+		$tempgithub = $row["github"];
+		$tempreddit = $row["reddit"];
+		$temptwitch = $row["twitch"];
 	}
 ?>
 
@@ -55,7 +59,7 @@
 			</form>
 		</ul>
 	</div>
-	<div class="col-sm-7">
+	<div class="col-sm-8">
 		<!-- Tab panes -->
 		<div class="tab-content">
 			<div id="home" class="tab-pane fade in active">
@@ -173,6 +177,28 @@
 						<small class="text-muted">VK Page</small>
 					</div>
 					
+					<div class="form-group row">
+						<label for="auth-profile-reddit" class="col-sm-2 col-form-label">Reddit</label>
+						<div class="col-sm-6">
+							<input type="text" class="form-control" name="auth-profile-reddit" id="auth-profile-reddit" value="<? echo $tempreddit; ?>" placeholder="Reddit Username">
+						</div>
+						<small class="text-muted">Reddit Username</small>
+					</div>
+					<div class="form-group row">
+						<label for="auth-profile-twitch" class="col-sm-2 col-form-label">Twitch</label>
+						<div class="col-sm-6">
+							<input type="text" class="form-control" name="auth-profile-twitch" id="auth-profile-twitch" value="<? echo $temptwitch; ?>" placeholder="Twitch Username">
+						</div>
+						<small class="text-muted">Twitch Username</small>
+					</div>
+					<div class="form-group row">
+						<label for="auth-profile-github" class="col-sm-2 col-form-label">GitHub</label>
+						<div class="col-sm-6">
+							<input type="text" class="form-control" name="auth-profile-github" id="auth-profile-github" value="<? echo $tempgithub; ?>" placeholder="GitHub Username">
+						</div>
+						<small class="text-muted">GitHub Username</small>
+					</div>
+					
 					<br>
 					<h6 class="card-subtitle text-muted">Please follow the <a href="#">Community Guidelines</a> before updating your profile.</h6>
 					<br>
@@ -270,10 +296,6 @@
 				<div id="logoutmessages"></div>
 			</div>
 		</div>
-	</div>
-	<div class="col-sm-2">
-		<h3>Dashboard</h3>
-		Hello <? echo $_SESSION["auth_username"]; ?>
 	</div>
 </div>
 

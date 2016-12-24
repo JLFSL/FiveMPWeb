@@ -7,8 +7,9 @@ RewriteRule ^(.*)$ https://www.five-multiplayer.net/$1 [L,R=301]
 
 RewriteRule ^home/?$ index.php [NC,L]
 RewriteRule ^index/?$ index.php [NC,L]
-RewriteRule ^privacy/?$ privacypolicy.php [NC,L]
+
 RewriteRule ^tos/?$ termsofservice.php [NC,L]
+RewriteRule ^credits/?$ credits.php [NC,L]
 
 RewriteRule ^download/?$ download.php [NC,L]
 RewriteRule ^servers/?$ servers.php [NC,L]
