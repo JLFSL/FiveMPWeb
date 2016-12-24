@@ -3,24 +3,34 @@
 	$_SESSION["page"] = "index";
 	
 	require_once($_SERVER['DOCUMENT_ROOT'] . "/include/global/global.php");
+	
+	
+	$articles = $pdo->prepare('SELECT * FROM blogposts ORDER BY date DESC');
+	$articles->execute();
+	$articles_a = $articles->rowCount();
+	
+	while ($row = $articles->fetch()) {
+		echo '
+		<br>
+		<div class="row">
+			<div class="col-sm-2"></div>
+			<div class="col-sm-8">
+				<h1><a class="deco-none" href="/article/' . $row["id"] . '/' . $row["title"] . '"><b>' . $row["title"] . '</b></a></h1>
+				<p>Posted ' . time_elapsed_string('@'.$row["date"]) . ' by <a class="deco-none" href="/user/' . $row["author"] . '">' . $row["author"] . '</a></p>
+				<div class="page">
+					<section id="content">
+						<img class="img-fluid" src="' . $row["image"] . '"><br>
+					</section>
+				</div>
+				<br>
+				<a href="/article/' . $row["id"] . '/' . $row["title"] . '"><button type="button" class="btn btn-danger btn-sm pull-xs-right red-div">Read More</button></a>
+			</div>
+		</div>
+		<br>
+		<br>';
+	}
 ?>
-
-<div class="row">
-	<div class="col-sm-7">
-		<h3>Welcome!</h3>
-		<p>Hi there and welcome to the new website for Five Multiplayer. It has come with an updated design using Bootstrap and some small features.<br><br><b>Authentication</b><br>We have made it possible to register and login on the website, these account details are required to be used in-game in the <i>future</i> when we're introducing <a href="https://en.wikipedia.org/wiki/Chromium_Embedded_Framework">CEF</a>, which allows us (and server owners) to show webpages in-game with Five Multiplayer.<br>
-	<h3>Latest Updates</h3>
-		<div class="alert alert-success" role="alert">
-			<h4 class="alert-success">New Release Candidate!</h4>
-			<p>FiveMP 0.1b RC4-1 has been released. - For the full changelog and download links, please click <a href="/download">here</a> - Enjoy!</p>
-			<p class="m-b-0">Thanks,<br>FiveMP Team.</p>
-		</div><br><br>
-	</div>
-	<div class="col-sm-5 twitter">
-		<? require_once($_SERVER['DOCUMENT_ROOT'] . "/twitter.php"); ?>
-	</div>
-</div>
-
+			
 <?php
 	require_once($_SERVER['DOCUMENT_ROOT'] . "/include/v1/footer.php");
 ?>

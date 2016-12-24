@@ -2,6 +2,10 @@
 	require_once($_SERVER['DOCUMENT_ROOT'] . "/include/global/session.php");
 	require_once($_SERVER['DOCUMENT_ROOT'] . "/include/global/db.php");
 
+	ini_set('display_errors', true);
+			ini_set('display_startup_errors', true);
+			error_reporting(true);
+
 	if($_POST["auth-type"] == "auth-login") { // Handles login authentication.
 		$success = false;
 		$error = "";
@@ -178,7 +182,7 @@
 			$serverid = $_POST["auth-claimserver-id"];
 			$serverusername = $_SESSION["auth_username"];
 			
-			$url = 'http://176.31.142.113:7000/servers';
+			$url = 'http://176.31.142.113:7001/v2/servers';
 			$array = file_get_contents($url);
 			$data = json_decode($array);
 			
@@ -188,7 +192,7 @@
 			
 			$error = "";
 			
-			foreach($data as $json){
+			foreach($data->servers as $json){
 				if($json->name == $name) {
 					$check_claimed = $pdo->prepare('SELECT * FROM claimedservers WHERE serverid = ?');
 					$check_claimed->execute([$serverid]);
@@ -204,7 +208,7 @@
 						$success = false;
 					}
 				} else {
-					$error = "Name not set, set the name to '" . $name . "' without the quotes.";
+					$error = $json->name . " Name not set, set the name to '" . $name . "' without the quotes.";
 					$success = false;
 				}
 			}
@@ -282,5 +286,64 @@
 			$error = "Only signed in users can access this feature.";
 			$output = json_encode(array('type'=>'error', 'message' => 'Error: ' . $error));
 			die($output);
+		}
+	}
+	if($_POST["auth-type"] == "auth-changelog") { // Handles changelog insertion
+		if(isset($_SESSION["auth_logged"])) {
+			if($_SESSION["auth_admin"] == true) {
+				$success = false;
+				$error = "";
+				
+				$module = htmlspecialchars($_POST["auth-changelog-module"]);
+				$version = htmlspecialchars($_POST["auth-changelog-version"]);
+				$change = htmlspecialchars($_POST["auth-changelog-type"]);
+				$description = htmlspecialchars($_POST["auth-changelog-description"]);
+				
+				if($module != "" && $version != "" && $change != "" && $description != "") {	
+					$changelog_add = $pdo->prepare("INSERT INTO changelog(module, version, `change`, description, date) VALUES(?, ?, ?, ?, ?)");
+					$changelog_add->execute(array($module, $version, $change, $description, time()));
+					
+					$success = true;
+				} else {
+					$error = "One of the values was not filled in!";
+				}
+
+				if($success == true) {
+					$output = json_encode(array('type'=>'success', 'message' => 'Successfully added changelog item!'));
+				} else {
+					$output = json_encode(array('type'=>'error', 'message' => 'Error: ' . $error));
+				}
+
+				die($output);
+			}
+		}
+	}
+	if($_POST["auth-type"] == "auth-blog") { // Handles blogpost insertion
+		if(isset($_SESSION["auth_logged"])) {
+			if($_SESSION["auth_admin"] == true) {
+				$success = false;
+				$error = "";
+				
+				$text = $_POST["auth-blog-text"];
+				$title = htmlspecialchars($_POST["auth-blog-title"]);
+				$image = htmlspecialchars($_POST["auth-blog-image"]);
+				
+				if($text != "" && $title != "" && $image != "") {	
+					$blogpost_add = $pdo->prepare("INSERT INTO blogposts(author, title, text, image, date, status) VALUES(?, ?, ?, ?, ?, ?)");
+					$blogpost_add->execute(array($_SESSION["auth_username"], $title, $text, $image, time(), 1));
+					
+					$success = true;
+				} else {
+					$error = "One of the values was not filled in!";
+				}
+
+				if($success == true) {
+					$output = json_encode(array('type'=>'success', 'message' => 'Successfully added blogpost!'));
+				} else {
+					$output = json_encode(array('type'=>'error', 'message' => 'Error: ' . $error));
+				}
+
+				die($output);
+			}
 		}
 	}

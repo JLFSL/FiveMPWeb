@@ -1,14 +1,13 @@
 /* Twitter Elements */
 .twitter{
-    background: url("../images/twitter.png") no-repeat center;
     height:100%;
 }
 
 .index-twitter{
-    background: #ffffff;
-    -webkit-box-shadow: 0px 0px 5px 1px rgba(168,168,168,1);
+    background: rgba(0,0,0,0.3);
+    /*-webkit-box-shadow: 0px 0px 5px 1px rgba(168,168,168,1);
     -moz-box-shadow: 0px 0px 5px 1px rgba(168,168,168,1);
-    box-shadow: 0px 0px 5px 1px rgba(168,168,168,1);
+    box-shadow: 0px 0px 5px 1px rgba(168,168,168,1);*/
     width:100%;
 }
 
@@ -50,14 +49,13 @@
 }
 
 .tweet{
-    border-bottom: 1px solid #eee;
     padding-bottom: 15px;
-    border-left:4px solid #ffffff;
+    border-left: 4px solid #ffffff;
 }
 
 .tweet:hover{
-    background-color:#eeeeee;
-    border-left-color:#5be64c;
+    background-color: rgba(0,0,0,0.50);
+    border-left-color: #c50000;
     transition: background 200ms;
     transition: border 200ms;
 }

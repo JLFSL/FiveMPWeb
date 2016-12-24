@@ -3,40 +3,107 @@
     changeing bootstrap elements to the needs of the site.
 */
 
-@import url(https://fonts.googleapis.com/css?family=Raleway:400,100,300,500,700,900);
+@import url('https://fonts.googleapis.com/css?family=Roboto+Condensed');
 
 h1, h2, h3, h4, h5, h6 {
-    font-family: 'Raleway';
+    font-family: 'Roboto Condensed', sans-serif;
+	color: #dddddd;
 }
 p, div {
-    font-family: 'Raleway';
+    font-family: 'Roboto Condensed', sans-serif;
+	color: #dddddd;
 }
 
 /* Standard Elements */
 body{
 	background-color: #ecf0f1;
-	background: url("../images/common/test.png");
-	background-repeat: no-repeat;
-	background-attachment: fixed;
+	background: url("../images/common/test.png") no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
 }
 
 a {
-    color: #2980b9;
+    color: #7d8bf2;
 }
 
-#editor {overflow:scroll; max-height:300px}
+a:hover {
+	color: #235fb2;
+}
+
+.deco-none {
+  color: inherit;
+  text-decoration: inherit;
+}
+
+.deco-none:link {
+  color: inherit;
+  text-decoration: inherit;
+}
+
+.deco-none:hover {
+  color: inherit;
+  text-decoration: inherit;
+}
+
+.username {
+	text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+	color: #bc0d0d;
+}
+
+#editor {
+	overflow:scroll; 
+	max-height:300px
+}
 
 .navbar-nav li a {
 	/*line-height: 40px;*/
 }
 
-.containermore {
-  margin: 0 auto;
-  width: 70%;
+@media screen and (min-width: 1280px) /* Desktop */ {
+  .containermore {
+    margin: 0 auto;
+	width: 65%;
+	margin-top: 50px;
+  }
+  .headermore {
+	margin: 0 auto;
+	width: 70%;
+  }
+}
+
+@media screen  and (max-width: 1279px) /* Tablet */ {
+  .containermore {
+    margin: 0 auto;
+	width: 90%;
+	margin-top: 50px;
+  }
+  .headermore {
+    margin: 0 auto;
+	width: 90%;
+  }
+}
+
+@media screen and (max-width: 500px) /* Mobile */ {
+  .containermore {
+    margin: 0 auto;
+	width: 95%;
+	margin-top: 50px;
+  }
+  .headermore {
+    margin: 0 auto;
+	width: 95%;
+  }
 }
 
 .red {
     color: #c50000;
+}
+
+.red-div {
+	background-color: #c50000;
+	border-color: transparent;
 }
 
 .blue {
@@ -50,6 +117,59 @@ a {
     box-shadow: 0px 0px 15px 0px rgba(0,0,0,0.75);
 }
 
+.alert {
+	background-color: rgba(0,0,0,0.3);
+}
+
+.alert-success, .alert-info, .alert-danger, .alert.warning {
+	background-color: rgba(0,0,0,0.0);
+}
+
+.modal-content {
+	background-color: rgba(0,0,0,0.8);
+}
+
+.form-control, .form-control[readonly] {
+	background-color: rgba(0,0,0,0.1);
+	color: #dddddd;
+}
+
+.form-control:focus, .form-control:active {
+	background-color: rgba(0,0,0,0.4);
+}
+
+.card, .card-footer {
+	background-color: rgba(0,0,0,0.1);
+}
+
+.table, .table .table {
+	background-color: rgba(0,0,0,0.0);
+}
+
+.table td, .table th {
+	border-top: none;
+}
+
+.table th {
+	background-color: rgba(0,0,0,0.4);
+}
+
+.table-info, .table-info>td, .table-info>th {
+	background-color: rgba(0,0,0,0.0);
+	border: solid 2px #d9edf7;
+}
+
+.navbar, .dropdown-menu {
+	background-color: rgba(0,0,0,0.8);
+	-webkit-box-shadow: 0px 0px 15px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: 0px 0px 15px 0px rgba(0,0,0,0.75);
+    box-shadow: 0px 0px 15px 0px rgba(0,0,0,0.75);
+}
+
+.navbar-nav .nav-item {
+	color: #a1acac;
+}
+
 /* Section Header */
 section#header{
     z-index: 99;
@@ -60,7 +180,7 @@ section#header{
 
 /* Section Content */
 section#content{
-    background-color: #fff;
+    background-color: rgba( 0, 0, 0, 0.3 );
     padding-left:15px;
     padding-right:15px;
     padding-top:20px;

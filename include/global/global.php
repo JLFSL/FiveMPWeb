@@ -4,7 +4,7 @@
 		### Configuration ###
 			
 			# Error Handling
-			$er_showerrors 		= false;
+			$er_showerrors 		= true;
 			$er_debugmode		= false;
 			
 			ini_set('display_errors', $er_showerrors);

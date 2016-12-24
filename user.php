@@ -40,11 +40,11 @@
 		<div class="col-sm-4">
 			<div class="card">
 				<div class="card-block">
-					<h4 class="card-title"><? echo $tempauthor ?></h4>
+					<h4 class="card-title"><font class="username"><b><? echo $tempauthor ?></b></font></h4>
 					<h6 class="card-subtitle text-muted"><? echo $temprank; ?></h6>
 				</div>
 				<!--<center><img src="<? //echo $tempavatar; ?>" class="img-fluid" style="max-height:340px;" alt="<? //echo $viewuser; ?>'s avatar"></center>-->
-				<center><img src="https://www.gravatar.com/avatar/<? echo md5(strtolower(trim($tempemail))); ?>?d=<? echo urlencode("https://www.five-multiplayer.net/assets/v1/images/profile/picback.png"); ?>&s=340" class="img-fluid" style="max-height:340px;" alt="<? echo $viewuser; ?>'s avatar"></center>
+				<center><img src="https://www.gravatar.com/avatar/<? echo md5(strtolower(trim($tempemail))); ?>?d=<? echo urlencode("https://www.five-multiplayer.net/assets/v1/images/profile/picback.png"); ?>&s=500" class="img-fluid" style="max-height:500px;" alt="<? echo $viewuser; ?>'s avatar"></center>
 				<div class="card-footer text-muted">
 					<?php 
 						if(!empty($tempsteam)) {

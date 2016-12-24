@@ -10,11 +10,10 @@
 		});
 	</script>
 	
-	<p>The second version of the masterserver is coming at the release of <i>0.2a</i>.<br>
-	This will provide a more stable- and informative server list.</p>
+	<p>This is the new server list, it's incomplete.<br>Features like: player list, server information and more will be implemented later.<br>
 	
 	<?php
-		$url = 'http://176.31.142.113:7000/servers';
+		$url = 'http://176.31.142.113:7001/v2/servers';
 		$array = file_get_contents($url);
 		$count = 0;
 		$count2 = 0;
@@ -29,29 +28,7 @@
 					<th>Players (max)</th>
 				</tr></thead><tbody>";
 				
-		foreach($data as $json){
-			echo 
-			"<tr>
-				<td	scope='row'>$count</td>
-				<td>".strip_tags($json->name)."</td>
-				<td>$json->players ($json->maxclients)</td>
-			</tr>";
-			$count++;
-		}
-		echo "</tbody></table>";
-
-		echo 
-			"<table class='hidden-sm-down table table-sm table-hover'><thead>
-				<tr>
-					<th>#</th>
-					<th>IP Address (Port)</th>
-					<th>Name</th>
-					<th>Players (max)</th>
-					<th>Version</th>
-					<th>Author</th>
-				</tr></thead><tbody>";
-				
-		foreach($data as $json){
+		foreach($data->servers as $json){
 			$serverauthor = $pdo->prepare('SELECT * FROM claimedservers WHERE serverid = ?');
 			$serverauthor->execute([$json->id]);
 			$serverauthor_a = $serverauthor->rowCount();
@@ -61,11 +38,40 @@
 			}
 				
 			echo "<tr>";
+			echo "	<td scope='row'>$count</td>";
+			echo "	<td>".strip_tags($json->name)."</td>";
+			echo "	<td>".$json->players->amount." (".$json->players->max.")</td>";
+			echo "</tr>";
+			$count++;
+		}
+		echo "</tbody></table>";
+
+		echo 
+			"<table class='hidden-xs-down table table-dark table-sm table-hover'><thead>
+				<tr>
+					<th>#</th>
+					<th>IP Address (Port)</th>
+					<th>Name</th>
+					<th>Players (max)</th>
+					<th>Version</th>
+					<th>Author</th>
+				</tr></thead><tbody>";
+				
+		foreach($data->servers as $json){
+			$serverauthor = $pdo->prepare('SELECT * FROM claimedservers WHERE serverid = ?');
+			$serverauthor->execute([$json->id]);
+			$serverauthor_a = $serverauthor->rowCount();
+			
+			while ($row = $serverauthor->fetch()) {
+				$tempauthor = $row["username"];
+			}
+			
+			echo "	<tr>";
 			echo "	<td scope='row'>$count2</td>";
 			echo "	<td>$json->ip ($json->port)</td>";
 			echo "	<td>".strip_tags($json->name)."</td>";
-			echo "	<td>$json->players ($json->maxclients)</td>";
-			echo "	<td><a href='".$json->version->link."'>".$json->version->self."</a></td>";
+			echo "	<td>".$json->players->amount." (".$json->players->max.")</td>";
+			echo "	<td><a href='https://dl.five-multiplayer.net/dl/FiveMP ".$json->stats->version.".zip'>".$json->stats->version."</a></td>";
 			if($serverauthor_a != 0) {
 				echo "	<td><a href='user/".$tempauthor."'>".$tempauthor."</a></td>";
 			} else {

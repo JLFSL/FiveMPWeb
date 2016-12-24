@@ -13,7 +13,9 @@ RewriteRule ^tos/?$ termsofservice.php [NC,L]
 RewriteRule ^download/?$ download.php [NC,L]
 RewriteRule ^servers/?$ servers.php [NC,L]
 RewriteRule ^team/?$ team.php [NC,L]
+RewriteRule ^features/?$ features.php [NC,L]
 
 RewriteRule ^dashboard/?$ dashboard.php [NC,L]
 
 RewriteRule ^user/(.*)$ /user.php?name=$1 [L]
+RewriteRule ^article/(.*)/(.*)$ /article.php?id=$1&title=$2 [L]

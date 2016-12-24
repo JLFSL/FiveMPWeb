@@ -37,67 +37,68 @@
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
     </head>
     <body>
+		<script>
+			$(function() {
+
+				
+				//load content for first tab and initialize  
+				$('#discord').click(function(e) {
+				   e.preventDefault();
+				$('#discordap').load('discord.php');
+				});
+			});
+		</script>
+		<div id="header">	
+			<nav class="navbar navbar-full navbar-fixed-top navbar-dark bg-faded">
+				<button class="navbar-toggler navbar-dark hidden-sm-up" type="button" data-toggle="collapse" data-target="#collapsenavbar" aria-controls="collapsenavbar" aria-expanded="false" aria-label="Toggle navigation">
+					<font color="white">&#9776;</font>
+				</button>
+				<!--<a class="navbar-brand hidden-sm-down" href="home">
+					<img class="hidden-sm-down" src="/assets/v1/images/common/logo.png" style="height:3rem">
+				</a>-->
+				<div class="collapse navbar-toggleable-xs headermore" id="collapsenavbar">
+					<a class="navbar-brand" href="#">
+				<img class="hidden-sm-down" src="/assets/v1/images/common/pictransweb.PNG" style="height:30px">
+				</a>
+					<ul class="nav navbar-nav">
+						<li class='nav-item <? if ($_SESSION["page"] == "index") echo "active"; ?>'><a class='nav-link' href='/home'>Home</a></li>
+						<li class='nav-item <? if ($_SESSION["page"] == "servers") echo "active"; ?>'><a class='nav-link' href='/servers'>Servers</a></li>
+						<li class='nav-item'><a class='nav-link' href='//forums.five-multiplayer.net'>Forum</a></li>
+						<li class='nav-item dropdown'>
+							<a class="nav-link dropdown-toggle" id="discord" data-toggle="dropdown" href="" role="button" aria-haspopup="true" aria-expanded="false">Discord</a>
+							<!--<a class='nav-link' href='https://discord.gg/0zRk4CXZ1j2K6wZb'>Discord</a>-->
+							<div id="discordap" class="dropdown-menu">
+								
+							</div>
+						</li>
+						<li class='nav-item <? if ($_SESSION["page"] == "download") echo "active"; ?>'><a class='nav-link' href='/download'>Download</a></li>
+						<li class='nav-item <? if ($_SESSION["page"] == "wiki") echo "active"; ?>'><a class='nav-link' href='https://wiki.five-multiplayer.net'>Documentation</a></li>
+					</ul>
+					<ul class="nav navbar-nav pull-xs-right">
+						<? if(!isset($_SESSION["auth_logged"])) { ?>
+						<li class='nav-item <? if ($_SESSION["page"] == "login") echo "active"; ?>'><a class='nav-link' href='login' data-toggle="modal" data-target="#login">Sign In</a></li>
+						<li class='nav-item <? if ($_SESSION["page"] == "register") echo "active"; ?>'><a class='nav-link' href='register' data-toggle="modal" data-target="#register">Register</a></li>
+						<? } else { ?>
+						<li class='nav-item <? if ($_SESSION["page"] == "myprofile") echo "active"; ?>'><a class='nav-link' href='/user/<? echo $_SESSION["auth_username"]; ?>'>Profile</a></li>
+						<li class='nav-item <? if ($_SESSION["page"] == "dashboard") echo "active"; ?>'><a class='nav-link' href='/dashboard'>Dashboard</a></li>
+						<? } ?>
+					</ul>
+				</div>
+			</nav>
+		</div>
 		<?php 
 			require_once($_SERVER['DOCUMENT_ROOT'] . "/login.php"); // Load Login Modal
 			require_once($_SERVER['DOCUMENT_ROOT'] . "/register.php"); // Load Claim Server Modal
 			require_once($_SERVER['DOCUMENT_ROOT'] . "/claimserver.php"); // Load Claim Server Modal
 		?>
 		<br>
-		
         <div class="containermore">
-		<img class="hidden-sm-down" src="/assets/v1/images/common/logonoicon.png" style="height:4rem">
-			<div id="header">
-			
-				<nav class="navbar navbar-full navbar-light bg-faded">
-					<button class="navbar-toggler hidden-sm-up" type="button" data-toggle="collapse" data-target="#exCollapsingNavbar2" aria-controls="exCollapsingNavbar2" aria-expanded="false" aria-label="Toggle navigation">
-						&#9776;
-					</button>
-					<!--<a class="navbar-brand hidden-sm-down" href="home">
-						<img class="hidden-sm-down" src="/assets/v1/images/common/logo.png" style="height:3rem">
-					</a>-->
-					<div class="collapse navbar-toggleable-xs" id="exCollapsingNavbar2">
-						<ul class="nav navbar-nav hidden-sm-down">
-							<li class='nav-item <? if ($_SESSION["page"] == "index") echo "active"; ?>'><a class='nav-link' href='/home'>Home</a></li>
-							<li class='nav-item <? if ($_SESSION["page"] == "servers") echo "active"; ?>'><a class='nav-link' href='/servers'>Servers</a></li>
-							<li class='nav-item'><a class='nav-link' href='//forums.five-multiplayer.net'>Forum</a></li>
-							<li class='nav-item dropdown'>
-								<a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Discord</a>
-								<!--<a class='nav-link' href='https://discord.gg/0zRk4CXZ1j2K6wZb'>Discord</a>-->
-								<div class="dropdown-menu">
-									<iframe src="https://discordapp.com/widget?id=177430299347648512&theme=dark" width="350" height="500" allowtransparency="true" frameborder="0"></iframe>
-								</div>
-							</li>
-							<li class='nav-item <? if ($_SESSION["page"] == "download") echo "active"; ?>'><a class='nav-link' href='/download'>Download</a></li>
-							<li class='nav-item <? if ($_SESSION["page"] == "wiki") echo "active"; ?>'><a class='nav-link' href='https://wiki.five-multiplayer.net'>Documentation</a></li>
-						</ul>
-						<ul class="nav navbar-nav hidden-sm-up">
-							<li class='nav-item <? if ($_SESSION["page"] == "index") echo "active"; ?>'><a class='nav-link' href='/home'>Home</a></li>
-							<li class='nav-item <? if ($_SESSION["page"] == "servers") echo "active"; ?>'><a class='nav-link' href='/servers'>Servers</a></li>
-							<li class='nav-item'><a class='nav-link' href='//forums.five-multiplayer.net'>Forum</a></li>
-							<li class='nav-item dropdown'>
-								<a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Discord</a>
-								<!--<a class='nav-link' href='https://discord.gg/0zRk4CXZ1j2K6wZb'>Discord</a>-->
-								<div class="dropdown-menu">
-									<iframe src="https://discordapp.com/widget?id=177430299347648512&theme=dark" width="350" height="500" allowtransparency="true" frameborder="0"></iframe>
-								</div>
-							</li>
-							<li class='nav-item <? if ($_SESSION["page"] == "download") echo "active"; ?>'><a class='nav-link' href='/download'>Download</a></li>
-							<li class='nav-item <? if ($_SESSION["page"] == "wiki") echo "active"; ?>'><a class='nav-link' href='https://wiki.five-multiplayer.net'>Documentation</a></li>
-						</ul>
-						<ul class="nav navbar-nav pull-xs-right">
-							<? if(!isset($_SESSION["auth_logged"])) { ?>
-							<li class='nav-item <? if ($_SESSION["page"] == "login") echo "active"; ?>'><a class='nav-link' href='login' data-toggle="modal" data-target="#login">Sign In</a></li>
-							<li class='nav-item <? if ($_SESSION["page"] == "register") echo "active"; ?>'><a class='nav-link' href='register' data-toggle="modal" data-target="#register">Register</a></li>
-							<? } else { ?>
-							<li class='nav-item <? if ($_SESSION["page"] == "myprofile") echo "active"; ?>'><a class='nav-link' href='/user/<? echo $_SESSION["auth_username"]; ?>'>Profile</a></li>
-							<li class='nav-item <? if ($_SESSION["page"] == "dashboard") echo "active"; ?>'><a class='nav-link' href='/dashboard'>Dashboard</a></li>
-							<? } ?>
-						</ul>
-					</div>
-				</nav>
-			
+			<?php
+			if ($_SESSION["page"] != "index" && $_SESSION["page"] != "news") 
+				echo '<div class="page"><section id="content">'; 
+			?>
+			<div class="alert alert-danger" role="alert">
+				<h4 class="alert-danger">Website update</h4>
+				<p>We're currently updating the website with a darker theme and different features, it may take a while to see all changes in effect.</p>
 			</div>
-			<? //if(!isset($_SERVER['PHP_AUTH_USER'])) echo '<center><a href="/dashboard">Log in</a></center>'; ?>
-			<? //if(isset($_SERVER['PHP_AUTH_USER'])) echo '<center><a href="/dashboard">Logged in as ' . $_SERVER['PHP_AUTH_USER'] . '</a></center><br>'; ?>
-			<div class="page">
-				<section id="content">
+						

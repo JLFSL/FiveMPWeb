@@ -35,7 +35,7 @@
 				echo '<div class="comment">';
 					echo '<div class="media-body">';
 						echo '<div class="col-sm-10">';
-							echo '<a href="/user/'.$row["author"].'"><strong><font color="e30a15">'.$row["author"].' </font></strong></a>';
+							echo '<a href="/user/'.$row["author"].'"><strong><font class="username">'.$row["author"].' </font></strong></a>';
 						echo '<span class="text-muted">';
 							echo '<small class="text-muted"> '.time_elapsed_string('@'.$row["date"]).'</small>';
 						echo '</span>';
@@ -47,7 +47,7 @@
 						echo '</p>';
 							
 						echo '</div><div class="col-sm-2">';
-						echo '<a href="/user/'.$row["author"].'"><img src="https://www.gravatar.com/avatar/'. md5(strtolower(trim($commentdataavatar_res))) .'?d='.urlencode("https://www.five-multiplayer.net/assets/v1/images/profile/picback.png").'&s=340" class="img-fluid" style="max-height:340px;" alt="'.$row["author"].'&rsquo;s avatar"></a>';
+						echo '<a href="/user/'.$row["author"].'"><img src="https://www.gravatar.com/avatar/'. md5(strtolower(trim($commentdataavatar_res))) .'?d='.urlencode("https://www.five-multiplayer.net/assets/v1/images/profile/picback.png").'&s=340" class="img-fluid img-thumbnail" style="max-height:340px;" alt="'.$row["author"].'&rsquo;s avatar"></a>';
 					echo '</div></div>';
 					echo '<div class="clearfix"></div>';
 				echo '</div>';
