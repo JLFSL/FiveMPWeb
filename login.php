@@ -4,13 +4,13 @@
 	<div class="modal-dialog" role="document">
 		<div class="modal-content">
 			<form id="loginform" class="form-signin" role="form">
-				<div class="modal-header">
-					<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+				<div class="modal-header auth-header">
+					<button type="button" class="close auth-close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
 					<h4 class="modal-title" id="loginLabel">Sign In</h4>
 				</div>
-			
+
 				<input class="form-control" type="hidden" value="auth-login" name="auth-type" id="auth-type">
-				<div class="modal-body">
+				<div class="modal-body auth-body">
 					<div id="loginmsg"></div>
 					<div class="form-group">
 						<label for="username">Username</label>
@@ -26,17 +26,17 @@
 							This is the password you filled in when registering your account, passwords are case-sensitive.
 						</p>
 					</div>
-					
+
 					<!--<div class="checkbox">
 						<label>
 						<input type="checkbox" value="remember-me"> Remember me
 						</label>
 					</div>-->
 				</div>
-				<div class="modal-footer">
+				<div class="modal-footer auth-footer">
 					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
 					<button class="btn btn-primary" type="submit">Sign In</button>
-					
+
 				</div>
 			</form>
 		</div>

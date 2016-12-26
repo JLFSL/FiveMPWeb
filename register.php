@@ -4,13 +4,13 @@
 	<div class="modal-dialog modal-lg" role="document">
 		<div class="modal-content">
 			<form id="registerform" class="form-register" role="form">
-				<div class="modal-header">
-					<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+				<div class="modal-header  auth-header">
+					<button type="button" class="close auth-close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
 					<h4 class="modal-title" id="registerLabel">Register</h4>
 				</div>
-			
+
 				<input class="form-control" type="hidden" value="auth-register" name="auth-type" id="auth-type">
-				<div class="modal-body">
+				<div class="modal-body auth-body">
 					<div id="registermsg"></div>
 					<div class="form-group">
 						Username
@@ -40,17 +40,16 @@
 							Confirm your password by re-entering it again.
 						</p>
 					</div>
-					
+
 					<!--<div class="checkbox">
 						<label>
 						<input type="checkbox" value="remember-me"> Remember me
 						</label>
 					</div>-->
 				</div>
-				<div class="modal-footer">
+				<div class="modal-footer auth-footer">
 					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
 					<button class="btn btn-primary" type="submit">Register Account</button>
-					
 				</div>
 			</form>
 		</div>
