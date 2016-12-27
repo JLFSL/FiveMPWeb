@@ -14,14 +14,14 @@
 					<div id="loginmsg"></div>
 					<div class="form-group">
 						<label for="username">Username</label>
-						<input class="form-control" type="username" placeholder="Username" name="auth-username" id="auth-username" required>
+						<input class="form-control auth-input" type="username" placeholder="Username" name="auth-username" id="auth-username" required>
 						<p id="usernameHelpBlock" class="form-text text-muted">
 							This is the username you filled in when registering your account, you can also use your e-mail.
 						</p>
 					</div>
 					<div class="form-group">
 						<label for="password">Password</label>
-						<input class="form-control" type="password" placeholder="Password" name="auth-password" id="auth-password" required>
+						<input class="form-control auth-input" type="password" placeholder="Password" name="auth-password" id="auth-password" required>
 						<p id="passwordHelpBlock" class="form-text text-muted">
 							This is the password you filled in when registering your account, passwords are case-sensitive.
 						</p>

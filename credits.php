@@ -22,7 +22,7 @@
 			<br>
 			<a href="/team">Our team</a> - The people that made this modification! :)
 			<br>
-			<a href="/user/nra4ever">nra4ever</a> - Allowing me to use his dedicated server for the past 4 years. All of this wouldn't exist without his amazing support.
+			<a href="/user/nra4ever">nra4ever</a> - Allowing me to use parts of his dedicated server for the past 4 years. All of this wouldn't exist without his amazing support.
 			</div>
 		<div class="col-sm-3">
 			<img class="img-fluid" style="max-height: 250px;" src="/assets/v1/images/common/pictransweb.PNG">

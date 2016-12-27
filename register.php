@@ -14,28 +14,28 @@
 					<div id="registermsg"></div>
 					<div class="form-group">
 						Username
-						<input pattern=".{3,24}" title="3 to 24 characters" class="form-control" type="username" placeholder="Username" name="auth-username" id="auth-username" required>
+						<input pattern=".{3,24}" title="3 to 24 characters" class="form-control auth-input" type="username" placeholder="Username" name="auth-username" id="auth-username" required>
 						<p id="usernameHelpBlock" class="form-text text-muted">
 							Choose any username with a length of between 3 and 24 characters, no special characters.
 						</p>
 					</div>
 					<div class="form-group">
 						Email Address
-						<input class="form-control" type="email" placeholder="Email Address" name="auth-email" id="auth-email" required>
+						<input class="form-control auth-input" type="email" placeholder="Email Address" name="auth-email" id="auth-email" required>
 						<p id="emailHelpBlock" class="form-text text-muted">
 							Enter a valid email address, we only send e-mails for password resets and security issues.
 						</p>
 					</div><br>
 					<div class="form-group">
 						Password
-						<input pattern=".{3,24}" title="6 to 32 characters" class="form-control" type="password" placeholder="Password" name="auth-password" id="auth-password" required>
+						<input pattern=".{3,24}" title="6 to 32 characters" class="form-control auth-input" type="password" placeholder="Password" name="auth-password" id="auth-password" required>
 						<p id="passwordHelpBlock" class="form-text text-muted">
 							Choose a strong password between 6 and 32 characters. Preferably containing characters and numbers.
 						</p>
 					</div>
 					<div class="form-group">
 						Confirm Password
-						<input pattern=".{3,24}" title="6 to 32 characters" class="form-control" type="password" placeholder="Confirm Password" name="auth-password2" id="auth-password2" required>
+						<input pattern=".{3,24}" title="6 to 32 characters" class="form-control auth-input" type="password" placeholder="Confirm Password" name="auth-password2" id="auth-password2" required>
 						<p id="passwordHelpBlock" class="form-text text-muted">
 							Confirm your password by re-entering it again.
 						</p>

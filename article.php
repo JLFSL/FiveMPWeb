@@ -1,21 +1,21 @@
-	<?php 
+	<?php
 		require_once($_SERVER['DOCUMENT_ROOT'] . "/include/global/session.php");
-		
+
 		$article = htmlspecialchars($_GET['id'], ENT_QUOTES, "UTF-8");
-		
+
 		$_SESSION["page"] = "news";
-		
+
 		require_once($_SERVER['DOCUMENT_ROOT'] . "/include/global/global.php");
-		
+
 		$newsarticle = $pdo->prepare('SELECT * FROM blogposts WHERE id = ?');
 		$newsarticle->execute([$article]);
 		$newsarticle_a = $newsarticle->rowCount();
-		
+
 		if($newsarticle_a == 0) {
 			echo "This article could not be found<br>";
 			die(require_once($_SERVER['DOCUMENT_ROOT'] . "/include/v1/footer.php"));
 		}
-		
+
 		while ($row = $newsarticle->fetch()) {
 			echo '
 			<br>
@@ -43,16 +43,16 @@
 					<ul class="media-list">
 						<div id="commentlist_ajax"></div>
 					</ul>
-					
+
 					<div class="row">
 							<div class="col-sm-12">
 								<button id="nextpage" class="btn btn-primary btn-block">Load More</button>
 							</div>
 						</div>
-					
+
 					<br>
-					
-					<form id="postblogcommentform" class="form-postblogcomment" role="form"> 
+
+					<form id="postblogcommentform" class="form-postblogcomment" role="form">
 						<input class="form-control" type="hidden" value="auth-postblogcomment" name="auth-type" id="auth-type">
 						<input class="form-control" type="hidden" value="<? echo $article; ?>" name="auth-postblogcomment-receiver" id="auth-postblogcomment-receiver">
 						
@@ -80,23 +80,23 @@
 			//$('#commentlist_ajax').append(posts);
 			$(posts).hide().appendTo("#commentlist_ajax").slideDown(0);
 		});
-	
+
 	$('#curcommentpage').append(pid);
-			
+
 	$( "#nextpage" ).click(function() {
 		pid = pid + 1;
-		
+
 		$.get('/include/global/misc/loadblogcomments.php?user=<? echo $article; ?>&pageid=' + pid + '&loadmore=1',function(data) {
 			var posts = $(data).find('#correctcomment');
 			//$('#commentlist_ajax').append(posts).fadeIn(1000);
 			$(posts).hide().appendTo("#correctcomment").slideDown(1000);
 		});
-		
+
 		$('#curcommentpage').empty();
 		$('#curcommentpage').append(pid);
-		
+
 	});
-	
+
 	$('#postblogcommentform').submit(function(e) {
 		var form = $(this);
 		var formdata = false;
