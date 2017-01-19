@@ -1,0 +1,30 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto+Condensed');
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Roboto Condensed', sans-serif;
+}
+p, div {
+    font-family: 'Roboto Condensed', sans-serif;
+}
+
+/* Standard Elements */
+body{
+	background-color: #ecf0f1;
+	background: url("../images/common/test.png");
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+}
+
+.content {
+    background-color: #fff;
+    padding-left:15px;
+    padding-right:15px;
+    padding-top:20px;
+}
+
+.disclaimer {
+    text-align: center;
+    margin-top: 20px;
+    color: #8a8a8a;
+    font-size: 11px;
+}

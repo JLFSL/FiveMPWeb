@@ -136,6 +136,6 @@
 		<br>
         <div class="containermore">
 			<?php
-			if ($_SESSION["page"] != "index" && $_SESSION["page"] != "news")
+			if ($_SESSION["page"] != "index" && $_SESSION["page"] != "news" && $_SESSION["page"] != "documentation")
 				echo '<div class="page"><section id="content">';
 			?>
