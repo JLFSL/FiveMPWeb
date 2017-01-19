@@ -1,5 +1,5 @@
 		<div class="disclaimer">
-			Copyright &copy 2016 Five-Multiplayer.net - All Rights Reserved
+			Copyright &copy 2017 Five-Multiplayer.net - All Rights Reserved
 			<br>
 			Five-Multiplayer is a third-party modification for GTA 5. Five-Multiplayer is in no way affiliated with Take2 or Rockstar Games.
 			<br>
